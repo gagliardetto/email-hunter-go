@@ -22,7 +22,7 @@ go get -u github.com/gagliardetto/email-hunter-go
 
 ## Examples
 
-#### Get API info
+#### Various examples
 
 ```go
 package main
