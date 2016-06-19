@@ -35,7 +35,7 @@ import (
 	"github.com/gagliardetto/email-hunter-go"
 )
 
-var APIKey string = "[API_KEY]"
+const APIKey string = "[API_KEY]"
 
 func main() {
 	client, err := emailHunter.NewClient(APIKey)
@@ -70,7 +70,7 @@ import (
 	"github.com/gagliardetto/email-hunter-go"
 )
 
-var APIKey string = "[API_KEY]"
+const APIKey string = "[API_KEY]"
 
 func main() {
 	client, err := emailHunter.NewClient(APIKey)
@@ -107,7 +107,7 @@ import (
 	"github.com/gagliardetto/email-hunter-go"
 )
 
-var APIKey string = "[API_KEY]"
+const APIKey string = "[API_KEY]"
 
 func main() {
 	client, err := emailHunter.NewClient(APIKey)
@@ -139,7 +139,7 @@ import (
 	"github.com/gagliardetto/email-hunter-go"
 )
 
-var APIKey string = "[API_KEY]"
+const APIKey string = "[API_KEY]"
 
 func main() {
 	client, err := emailHunter.NewClient(APIKey)
@@ -171,7 +171,7 @@ import (
 	"github.com/gagliardetto/email-hunter-go"
 )
 
-var APIKey string = "[API_KEY]"
+const APIKey string = "[API_KEY]"
 
 func main() {
 	client, err := emailHunter.NewClient(APIKey)
@@ -201,7 +201,7 @@ import (
 	"github.com/gagliardetto/email-hunter-go"
 )
 
-var APIKey string = "[API_KEY]"
+const APIKey string = "[API_KEY]"
 
 func main() {
 	client, err := emailHunter.NewClient(APIKey)
