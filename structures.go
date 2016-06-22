@@ -17,6 +17,7 @@ type Client struct {
 	domain     string
 }
 
+// DomainSearchOptions are the options for DomainSearch, e.g. domain, company, ...
 type DomainSearchOptions struct {
 	Domain  string
 	Company string
@@ -24,6 +25,7 @@ type DomainSearchOptions struct {
 	Type    string
 }
 
+// DomainSearchResults is the type returned by DomainSearch
 type DomainSearchResults struct {
 	Status  string  `json:"status"`
 	Domain  string  `json:"domain"`
