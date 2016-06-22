@@ -36,10 +36,6 @@ func GetTestKey() string {
 }
 
 func TestFetchAndReturnPage(t *testing.T) {
-	// server serves json
-	// TestFetchAndReturnPage asks for that json
-	// if the two are equal, success
-
 	testBody := `{some:"json"}`
 
 	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -54,6 +50,9 @@ func TestFetchAndReturnPage(t *testing.T) {
 	queryParameters := url.Values{}
 	var bodyPayload interface{}
 	client.domain = ""
+	defer func() {
+		client.domain = "https://api.emailhunter.co/"
+	}()
 	response, _, err := client.fetchAndReturnPage(path, method, headers, queryParameters, bodyPayload)
 	if err != nil {
 		t.Error("reading reponse body: %v, want %q", err, testBody)
@@ -65,48 +64,45 @@ func TestFetchAndReturnPage(t *testing.T) {
 
 }
 
-func main() {
-
+func TestDomainSearch(t *testing.T) {
 	domainSearchOptions := DomainSearchOptions{
 		Domain: "stripe.com",
 	}
-	domainSearchResults, err := client.DomainSearch(domainSearchOptions)
+	_, err := client.DomainSearch(domainSearchOptions)
 	if err != nil {
-		fmt.Println("error: ", err)
-		return
+		t.Error("calling DomainSearch: %q", err)
 	}
-	fmt.Printf("%#v\n\n", domainSearchResults)
+}
 
+func TestEmailFinder(t *testing.T) {
 	emailFinderOptions := EmailFinderOptions{
 		Domain:    "asana.com",
 		FirstName: "Dustin",
 		LastName:  "Moskovitz",
 	}
-	emailFinderResults, err := client.EmailFinder(emailFinderOptions)
+	_, err := client.EmailFinder(emailFinderOptions)
 	if err != nil {
-		fmt.Println("error: ", err)
-		return
+		t.Error("calling EmailFinder: %q", err)
 	}
-	fmt.Printf("%#v\n\n", emailFinderResults)
+}
 
-	emailVerificationResults, err := client.EmailVerification("steli@close.io")
+func TestEmailVerification(t *testing.T) {
+	_, err := client.EmailVerification("steli@close.io")
 	if err != nil {
-		fmt.Println("error: ", err)
-		return
+		t.Error("calling EmailVerification: %q", err)
 	}
-	fmt.Printf("%#v\n\n", emailVerificationResults)
+}
 
-	emailCountResults, err := client.EmailCount("stripe.com")
+func TestEmailCount(t *testing.T) {
+	_, err := client.EmailCount("stripe.com")
 	if err != nil {
-		fmt.Println("error: ", err)
-		return
+		t.Error("calling EmailCount: %q", err)
 	}
-	fmt.Printf("%#v\n\n", emailCountResults)
+}
 
-	accountInformationResults, err := client.AccountInformation()
+func TestAccountInformation(t *testing.T) {
+	_, err := client.AccountInformation()
 	if err != nil {
-		fmt.Println("error: ", err)
-		return
+		t.Error("calling AccountInformation: %q", err)
 	}
-	fmt.Printf("%#v\n\n", accountInformationResults)
 }
