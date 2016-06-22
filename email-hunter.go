@@ -15,7 +15,7 @@ import (
 )
 
 func NewClient(APIKey string) (*Client, error) {
-	if len(APIKey) < 1 {
+	if len(APIKey) == 0 {
 		return &Client{}, errors.New("APIKey not valid")
 	}
 
@@ -126,7 +126,7 @@ func (client *Client) DomainSearch(options DomainSearchOptions) (DomainSearchRes
 		queryParameters.Add("company", options.Company)
 	}
 
-	if len(options.Domain) < 1 && len(options.Company) < 1 {
+	if len(options.Domain) == 0 && len(options.Company) == 0 {
 		return DomainSearchResults{}, errors.New("You must provide at least Domain or Company (or both)")
 	}
 
@@ -169,7 +169,7 @@ func (client *Client) EmailFinder(options EmailFinderOptions) (EmailFinderResult
 		queryParameters.Add("company", options.Company)
 	}
 
-	if len(options.Domain) < 1 && len(options.Company) < 1 {
+	if len(options.Domain) == 0 && len(options.Company) == 0 {
 		return EmailFinderResults{}, errors.New("You must provide at least Domain or Company (or both)")
 	}
 
