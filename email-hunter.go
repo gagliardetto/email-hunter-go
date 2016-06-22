@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
+	"time"
 )
 
 func NewClient(APIKey string) (*Client, error) {
@@ -21,6 +22,7 @@ func NewClient(APIKey string) (*Client, error) {
 	return &Client{
 		httpClient: http.DefaultClient,
 		APIKey:     APIKey,
+		domain:     "https://api.emailhunter.co/",
 	}, nil
 }
 
@@ -31,8 +33,7 @@ func (client *Client) fetchAndReturnPage(path string, method string, headers htt
 	}
 	queryParameters.Add("api_key", client.APIKey)
 
-	domain := "https://api.emailhunter.co/"
-	requestURL, err := url.Parse(domain)
+	requestURL, err := url.Parse(client.domain)
 	if err != nil {
 		return []byte(""), http.Header{}, err
 	}

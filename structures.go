@@ -1,6 +1,7 @@
 package emailHunter
 
 import (
+	"net/http"
 	"time"
 )
 
@@ -13,6 +14,7 @@ const (
 type Client struct {
 	httpClient *http.Client
 	APIKey     string
+	domain     string
 }
 
 type DomainSearchOptions struct {
