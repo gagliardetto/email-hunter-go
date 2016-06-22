@@ -20,6 +20,14 @@ Run the following command to install the package:
 go get -u github.com/gagliardetto/email-hunter-go
 ```
 
+## Testing
+
+To run tests, first export the EMAIL_HUNTER_KEY environment variable
+
+```
+export EMAIL_HUNTER_KEY=12345678ab9c123456a7bcde89123a4567ab891c
+```
+
 ## Examples
 
 #### Domain search
