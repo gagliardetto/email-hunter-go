@@ -24,12 +24,6 @@ func NewClient(APIKey string) (*Client, error) {
 	}, nil
 }
 
-// Client is the API client
-type Client struct {
-	httpClient *http.Client
-	APIKey     string
-}
-
 func (client *Client) fetchAndReturnPage(path string, method string, headers http.Header, queryParameters url.Values, bodyPayload interface{}) ([]byte, http.Header, error) {
 
 	if client.APIKey == "" {
@@ -284,4 +278,17 @@ func (client *Client) AccountInformation() (AccountInformationResults, error) {
 		return AccountInformationResults{}, err
 	}
 	return accountInformationResults, nil
+}
+
+func (ct *Date) UnmarshalJSON(b []byte) error {
+	if b[0] == '"' && b[len(b)-1] == '"' {
+		b = b[1 : len(b)-1]
+	}
+	var err error
+	ct.Time, err = time.Parse(TimestampFormat, string(b))
+	return err
+}
+
+func (ct *Date) MarshalJSON() ([]byte, error) {
+	return []byte(ct.Time.Format(TimestampFormat)), nil
 }

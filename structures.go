@@ -9,6 +9,12 @@ const (
 	GenericType  string = "generic"
 )
 
+// Client is the API client
+type Client struct {
+	httpClient *http.Client
+	APIKey     string
+}
+
 type DomainSearchOptions struct {
 	Domain  string
 	Company string
@@ -91,16 +97,3 @@ type Date struct {
 }
 
 const TimestampFormat = "2006-01-02"
-
-func (ct *Date) UnmarshalJSON(b []byte) error {
-	if b[0] == '"' && b[len(b)-1] == '"' {
-		b = b[1 : len(b)-1]
-	}
-	var err error
-	ct.Time, err = time.Parse(TimestampFormat, string(b))
-	return err
-}
-
-func (ct *Date) MarshalJSON() ([]byte, error) {
-	return []byte(ct.Time.Format(TimestampFormat)), nil
-}
