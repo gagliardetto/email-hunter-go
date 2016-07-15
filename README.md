@@ -30,7 +30,7 @@ export EMAIL_HUNTER_KEY=12345678ab9c123456a7bcde89123a4567ab891c
 
 ## Examples
 
-#### Domain search
+### Domain search
 
 https://api.emailhunter.co/api/docs#domain-search
 
@@ -65,7 +65,7 @@ func main() {
 
 ```
 
-#### Email finder
+### Email finder
 
 https://api.emailhunter.co/api/docs#email-finder
 
@@ -102,7 +102,7 @@ func main() {
 
 ```
 
-#### Email verification
+### Email verification
 
 https://api.emailhunter.co/api/docs#email-verification
 
@@ -134,7 +134,7 @@ func main() {
 
 ```
 
-#### Email count
+### Email count
 
 https://api.emailhunter.co/api/docs#email-count
 
@@ -166,7 +166,7 @@ func main() {
 
 ```
 
-#### Account information
+### Account information
 
 https://api.emailhunter.co/api/docs#account
 
@@ -198,7 +198,7 @@ func main() {
 
 ```
 
-#### All examples
+### All examples
 
 ```go
 package main
